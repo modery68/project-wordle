@@ -9,7 +9,25 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <>Put a game here!</>;
+  const [checkWord, setCheckWord] = React.useState('');
+
+  return <>
+  <form>
+    <label htmlFor='check-word'>
+      Enter guess:
+    </label>
+    <input
+    type='text'
+    id='check-word'
+    value={checkWord}
+    pattern='^.{5}$'
+    maxLength={5}
+    onChange={(event) => {
+      setCheckWord(event.target.value.toUpperCase());
+    }}
+    />
+  </form>
+  </>;
 }
 
 export default Game;
