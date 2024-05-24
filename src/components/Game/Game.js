@@ -1,7 +1,8 @@
-import React from 'react';
-
-import { sample } from '../../utils';
-import { WORDS } from '../../data';
+import React from "react";
+import GuessInput from "../GuessInput/GuessInput";
+import { sample } from "../../utils";
+import { WORDS } from "../../data";
+import GuessResults from "../GuessResults/GuessResults";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -9,25 +10,15 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [checkWord, setCheckWord] = React.useState('');
-
-  return <>
-  <form>
-    <label htmlFor='check-word'>
-      Enter guess:
-    </label>
-    <input
-    type='text'
-    id='check-word'
-    value={checkWord}
-    pattern='^.{5}$'
-    maxLength={5}
-    onChange={(event) => {
-      setCheckWord(event.target.value.toUpperCase());
-    }}
-    />
-  </form>
-  </>;
+  return (
+    <>
+      <div class="guess-results">
+        <p class="guess">FIRST</p>
+        <p class="guess">GUESS</p>
+      </div>
+      <GuessInput />
+    </>
+  );
 }
 
 export default Game;
